@@ -1,0 +1,37 @@
+---
+import { formatTitle } from '../util/title';
+
+const { name, frontmatter } = Astro.props;
+const pageName = frontmatter?.name ? frontmatter.name : name;
+const title = formatTitle(pageName);
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<h1>{pageName}</h1>
+		<slot />
+		<footer>
+			<p class="footerlinks">
+				<a href="/">Home</a>
+			</p>
+		</footer>
+	</body>
+</html>
+
+<style>
+	footer {
+		margin-top: 3em;
+	}
+	.footerlinks {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1em;
+	}
+</style>
