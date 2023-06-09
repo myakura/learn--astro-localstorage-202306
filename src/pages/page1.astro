@@ -1,0 +1,25 @@
+---
+const name = 'page 1: set value in inline inside head, read value in script inside body';
+---
+
+<html lang="en">
+	<head>
+	<meta charset="utf-8" />
+	<title>{name}</title>
+	<meta name="viewport" content="width=device-width" />
+	<script is:inline>
+		console.log('this is inlined in the head.');
+		window.localStorage.setItem('foo', 'bar');
+	</script>
+
+	<body>
+		<h1>{name}</h1>
+
+		<script>
+			console.log('this is inside the body.');
+			console.log(
+				'reading data from localStorage: ' + window.localStorage.getItem('foo'),
+			);
+		</script>
+	</body>
+</html>
